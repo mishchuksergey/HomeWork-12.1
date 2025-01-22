@@ -1,6 +1,5 @@
 import os
 from http.client import responses
-
 import requests
 from dotenv import load_dotenv
 load_dotenv('.env')
@@ -19,7 +18,3 @@ def convert_current(valuta, rub, amount) -> float:
         return result
     else:
         print("\nЧто-то пошло не так с запросом на конвертацию валюты.")
-
-
-
-#print(convert_current("USD", "RUB", 1))
