@@ -1,8 +1,9 @@
 import json
+
 from src.external_api import convert_current
 
-
 path = 'data/operations.json'
+
 
 def convert_transactions(path: str) -> list:
     """Функция принимает на вход путь до JSON-файла и возвращает список словарей"""
@@ -24,10 +25,10 @@ def transaction_amount(transaction: dict) -> float:
     """Функция возвращает сумму транзакции в рублях.
      Если транзакция была в USD или EUR, происходит обращение к внешнему API
      для получения текущего курса валют и конвертации суммы операции в рубли."""
-    valuta = transaction["operationAmount"]["currency"]["code"] #Определяем код валюты
-    amount = transaction["operationAmount"]["amount"] #Определяем сумму валюты
+    valuta = transaction["operationAmount"]["currency"]["code"]  # Определяем код валюты
+    amount = transaction["operationAmount"]["amount"]  # Определяем сумму валюты
     if valuta == "RUB":
-       return amount
+        return amount
     else:
         result = convert_current(valuta, "RUB", amount)
         return result

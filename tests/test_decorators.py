@@ -1,5 +1,6 @@
 import pytest
-from src.decorators import log, my_function
+
+from src.decorators import log
 
 
 def test_log():
