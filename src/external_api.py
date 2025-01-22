@@ -1,12 +1,15 @@
 import os
 from http.client import responses
+from webbrowser import Error
+
 import requests
 from dotenv import load_dotenv
 load_dotenv('.env')
 
 API_KEY = os.getenv("API_KEY")
 
-def convert_current(valuta, rub, amount) -> float:
+
+def convert_current(valuta, rub, amount) -> any:
     """ Функция обращается к внешнему API и производит конвертацию валюты. """
     response = requests.get(
         f"https://api.apilayer.com/exchangerates_data/convert?to={rub}&from={valuta}&amount={amount}&apikey={API_KEY}")
@@ -18,3 +21,4 @@ def convert_current(valuta, rub, amount) -> float:
         return result
     else:
         print("\nЧто-то пошло не так с запросом на конвертацию валюты.")
+        return Error
