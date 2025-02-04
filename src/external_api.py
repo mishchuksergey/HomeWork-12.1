@@ -1,6 +1,5 @@
 import os
 from webbrowser import Error
-
 import requests
 from dotenv import load_dotenv
 
